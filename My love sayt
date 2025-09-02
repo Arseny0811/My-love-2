@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Моя любовь</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat&display=swap');
+
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background: #0b0c1a;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* Фон с созвездием Большой Медведицы (SVG) */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Ursa_Major_constellation_map_ru.svg/1024px-Ursa_Major_constellation_map_ru.svg.png') no-repeat center center;
+    background-size: contain;
+    opacity: 0.1;
+    z-index: -1;
+  }
+
+  header {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 10;
+  }
+
+  nav button {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 8px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  nav button:hover {
+    background-color: #fff;
+    color: #0b0c1a;
+  }
+
+  main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+  #home h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #ff6f91;
+    text-shadow: 0 0 10px #ff6f91;
+  }
+
+  #reasons {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #f0e6f6;
+  }
+
+  #reasons h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #a259ff;
+    text-align: center;
+    text-shadow: 0 0 8px #a259ff;
+  }
+
+  #reasons ol {
+    padding-left: 20px;
+  }
+
+  #reasons li {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <button id="btnReasons">101 причина</button>
+  </nav>
+</header>
+
+<main>
+  <section id="home">
+    <h1>моя любовь к тебе вечна</h1>
+  </section>
+
+  <section id="reasons" style="display:none;">
+    <h2>101 причина, почему я люблю тебя</h2>
+    <ol id="reasonsList"></ol>
+  </section>
+</main>
+
+<script>
+  const btnReasons = document.getElementById('btnReasons');
+  const homeSection = document.getElementById('home');
+  const reasonsSection = document.getElementById('reasons');
+  const reasonsList = document.getElementById('reasonsList');
+
+  const reasons = [
+    "Ты делаешь меня счастливым(ой).",
+    "Твоя улыбка озаряет мой день.",
+    "Ты понимаешь меня без слов.",
+    "С тобой я чувствую себя в безопасности.",
+    "Ты вдохновляешь меня становиться лучше.",
+    "Твоя доброта не знает границ.",
+    "Ты поддерживаешь меня в трудные моменты.",
+    "Твои глаза — как звезды в ночи.",
+    "Ты умеешь слушать и слышать.",
+    "С тобой каждый момент особенный.",
+    // ... (добавлю еще 91 причину ниже)
+  ];
+
+  // Добавим еще 91 причину (примерные, чтобы заполнить список)
+  for(let i = 11; i <= 101; i++) {
+    reasons.push(`Причина номер ${i}: Ты уникален(на) и неповторим(а).`);
+  }
+
+  btnReasons.addEventListener('click', () => {
+    homeSection.style.display = 'none';
+    reasonsSection.style.display = 'block';
+    if (reasonsList.children.length === 0) {
+      reasons.forEach(reason => {
+        const li = document.createElement('li');
+        li.textContent = reason;
+        reasonsList.appendChild(li);
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
